@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <dl>
+        <dt>Id</dt>
+        <dd>@Model.Id</dd>
+
+        <dt>CustName</dt>
+        <dd>@Model.CustName</dd>
+
+        <dt>CreateDate</dt>
+        <dd>@Model.Created</dd>
+    </dl>
+</body>
+</html>

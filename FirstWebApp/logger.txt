@@ -1,0 +1,15 @@
+2014-12-22 12:21:37.4541|INFO|FirstWebApp.Models.WebAppService|YYY
+2014-12-22 12:22:36.1311|INFO|FirstWebApp.Models.WebAppService|YYY
+2014-12-22 12:24:08.0071|INFO|FirstWebApp.Models.WebAppService|YYY
+2014-12-22 12:37:50.3181|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-22 13:49:58.5871|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-22 16:46:12.2387|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-22 16:47:22.8447|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-22 16:48:19.0823|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-22 16:49:34.3369|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-22 16:50:36.2921|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-22 17:57:55.8523|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-23 09:32:01.4666|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-23 09:33:34.3446|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-23 09:33:35.0316|DEBUG|FirstWebApp.Models.WebAppService|JimLin
+2014-12-23 10:05:23.6186|INFO|FirstWebApp.Models.WebAppService|test NLog

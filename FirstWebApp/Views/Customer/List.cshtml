@@ -1,0 +1,30 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<System.Collections.Generic.IEnumerable<dynamic>>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        @foreach (var c in @Model)
+        {
+            <dl>
+                <dt>Id</dt>
+                <dd>@c.Id</dd>
+
+                <dt>CustName</dt>
+                <dd>@c.CustName</dd>
+
+                <dt>CreateDate</dt>
+                <dd>@c.Created</dd>
+            </dl>
+        }
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<FirstWebApp.Customer>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <dl>
+            <dt>Id</dt>
+            <dd>@Model.Id</dd>
+
+            <dt>CustName</dt>
+            <dd>@Model.CustName</dd>
+
+            <dt>CreateDate</dt>
+            <dd>@Model.Created</dd>
+        </dl>
+    </div>
+</body>
+</html>

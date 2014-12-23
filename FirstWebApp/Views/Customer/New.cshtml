@@ -1,0 +1,24 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<FirstWebApp.Customer>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <form action="new" method="post">
+            <dl>
+                <dt>CustName</dt>
+                <dd><input type="text" name="CustName" value="@Model.CustName" /></dd>
+            </dl>
+            <input type="submit" name="OK" value="OK" />
+        </form>
+    </div>
+</body>
+</html>
