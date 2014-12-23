@@ -4,6 +4,9 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+    using FirstWebApp.Modules;
+    using Nancy;
+    using Nancy.Testing;
     using Xunit;
 
     public class AppTest
@@ -28,6 +31,22 @@
             Assert.Throws<System.IndexOutOfRangeException>(
                 /// Customer array length is 4
                 () => this.webAppService.Entities.Customer.ToArray<Customer>()[10]);
+        }
+
+        // "Views" folder must copy paste to the "bin" folder
+        [Fact]
+        public void TestRouteExists()
+        {
+            // Given
+            var bootstrapper = new ConfigurableBootstrapper(with =>
+                             with.AllDiscoveredModules());
+            var browser = new Browser(bootstrapper);
+
+            // When
+            var result = browser.Get("/customer/2", with => with.HttpRequest());
+
+            // Then
+            Assert.Equal(HttpStatusCode.OK, result.StatusCode);
         }
     }
 }
