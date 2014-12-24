@@ -32,7 +32,7 @@
                 /// Customer list count is 4
                 () =>
                 {
-                        IList<Customer> cust = this.appService.GetCustomers();
+                        IList<Customer> cust = this.appService.FindCustomers();
                         return cust[10].Id;
                 });
         }
@@ -51,6 +51,24 @@
 
             // Then
             Assert.Equal(HttpStatusCode.OK, result.StatusCode);
+        }
+
+        [Fact]
+        public void TestAddCustomer()
+        {
+            this.appService.AddCustomer(new Customer { CustName = "TEST" });
+            Customer cust = this.appService.GetCustomerByName("TEST");
+
+            Assert.Equal(true, cust != null);
+        }
+
+        [Fact]
+        public void TestDeleteCustomer()
+        {
+            Customer cust = this.appService.GetCustomerByName("TEST");
+            this.appService.DeleteCustomer(cust);
+
+            Assert.Equal(null, this.appService.GetCustomerByName("TEST"));
         }
     }
 }

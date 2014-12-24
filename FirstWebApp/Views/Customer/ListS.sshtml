@@ -5,19 +5,22 @@
 </head>
 <body>
 	@Each
-        <dl>
-            <dt>Id</dt>
-            <dd>@Current.Id</dd>
+		<form action="delete/@Current.Id" method="post">
+			<dl>
+				<dt>Id</dt>
+				<dd>@Current.Id</dd>
 
-            <dt>CustName</dt>
-            <dd>@Current.CustName</dd>
+				<dt>CustName</dt>
+				<dd>@Current.CustName</dd>
 
-            <dt>CreateDate</dt>
-            <dd>@Current.Created</dd>
+				<dt>CreateDate</dt>
+				<dd>@Current.Created</dd>
 
-			<dt>ModifyDate</dt>
-            <dd>@Current.Modified</dd>
-        </dl>
+				<dt>ModifyDate</dt>
+				<dd>@Current.Modified</dd>
+			</dl>
+			<input type="submit" name="DELETE" value="DELETE" />
+		</form>
     @EndEach
 </body>
 </html>

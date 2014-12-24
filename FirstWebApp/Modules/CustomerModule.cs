@@ -27,7 +27,7 @@
                 // var custList = appService.Entities.Customer
                 //    .Select(c => new { Id = c.Id, CustName = c.CustName, Created = c.Created });
 
-                IList<Customer> custList = appService.GetCustomers();
+                IList<Customer> custList = appService.FindCustomers();
                 appService.Logger.Info("test NLog");
                 appService.Logger.Debug(custList.ToArray<dynamic>()[0].CustName);
                 
@@ -66,6 +66,14 @@
                 Customer cust = appService.GetCustomerById(c.Id);
                 cust.CustName = c.CustName;
                 appService.UpdateCustomer(cust);
+
+                return Response.AsRedirect("/customer");
+            };
+
+            this.Post["/delete/{id:int}"] = parameters =>
+            {
+                Customer cust = appService.GetCustomerById(parameters.Id);
+                appService.DeleteCustomer(cust);
 
                 return Response.AsRedirect("/customer");
             };

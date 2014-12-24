@@ -25,9 +25,14 @@
             }
         }
 
-        public IList<Customer> GetCustomers()
+        public IList<Customer> FindCustomers()
         {
             return this.entities.Customer.ToList<Customer>();
+        }
+
+        public Customer GetCustomerByName(string name)
+        {
+            return this.entities.Customer.SingleOrDefault<Customer>(c => c.CustName.Equals(name));
         }
 
         public Customer GetCustomerById(int id)
@@ -46,6 +51,12 @@
         public void UpdateCustomer(Customer cust)
         {
             cust.Modified = System.DateTime.Now;
+            this.entities.SaveChanges();
+        }
+
+        public void DeleteCustomer(Customer cust)
+        {
+            entities.Customer.Remove(cust);
             this.entities.SaveChanges();
         }
     }
