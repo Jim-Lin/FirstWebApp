@@ -22,6 +22,7 @@ namespace FirstWebApp
         public int Id { get; set; }
         public string CustName { get; set; }
         public System.DateTime Created { get; set; }
+        public System.DateTime Modified { get; set; }
     
         public virtual ICollection<Order> Order { get; set; }
     }
