@@ -17,6 +17,6 @@
 
         void UpdateRecord(T record);
 
-        void DeleteRecord(T record);
+        void DeleteRecord(int id);
     }
 }

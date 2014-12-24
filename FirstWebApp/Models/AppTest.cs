@@ -7,6 +7,7 @@
     using FirstWebApp.Modules;
     using Nancy;
     using Nancy.Testing;
+    using NLog;
     using Xunit;
 
     public class AppTest
@@ -43,7 +44,12 @@
         {
             // Given
             var bootstrapper = new ConfigurableBootstrapper(with =>
-                             with.AllDiscoveredModules());
+                {
+                    with.Module<CustomerModule>();
+                    with.Dependency(custService);
+                    with.Dependency(LogManager.GetCurrentClassLogger());
+                });
+
             var browser = new Browser(bootstrapper);
 
             // When
@@ -71,7 +77,7 @@
             Customer cust = this.custService.GetRecordByName("TEST");
             if (cust != null)
             {
-                this.custService.DeleteRecord(cust);
+                this.custService.DeleteRecord(cust.Id);
                 Assert.Null(this.custService.GetRecordByName("TEST"));
             }
             else

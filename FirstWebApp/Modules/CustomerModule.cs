@@ -63,23 +63,14 @@
             this.Post["/update/{id:int}"] = parameters =>
             {
                 Customer c = this.Bind<Customer>();
-                Customer cust = custService.GetRecordById(c.Id);
-                if (cust != null)
-                {
-                    cust.CustName = c.CustName;
-                    custService.UpdateRecord(cust);
-                }
+                custService.UpdateRecord(c);
 
                 return Response.AsRedirect("/customer");
             };
 
             this.Post["/delete/{id:int}"] = parameters =>
             {
-                Customer cust = custService.GetRecordById(parameters.Id);
-                if (cust != null)
-                {
-                    custService.DeleteRecord(cust);
-                }
+                custService.DeleteRecord(parameters.Id);
 
                 return Response.AsRedirect("/customer");
             };

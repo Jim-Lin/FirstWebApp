@@ -38,16 +38,25 @@
             this.entities.SaveChanges();
         }
 
-        public void UpdateRecord(Customer cust)
+        public void UpdateRecord(Customer c)
         {
-            cust.Modified = System.DateTime.Now;
-            this.entities.SaveChanges();
+            Customer cust = this.GetRecordById(c.Id);
+            if (cust != null)
+            {
+                cust.CustName = c.CustName;
+                cust.Modified = System.DateTime.Now;
+                this.entities.SaveChanges();
+            }
         }
 
-        public void DeleteRecord(Customer cust)
+        public void DeleteRecord(int id)
         {
-            this.entities.Customer.Remove(cust);
-            this.entities.SaveChanges();
+            Customer cust = this.GetRecordById(id);
+            if (cust != null)
+            {
+                this.entities.Customer.Remove(cust);
+                this.entities.SaveChanges();
+            }
         }
     }
 }
