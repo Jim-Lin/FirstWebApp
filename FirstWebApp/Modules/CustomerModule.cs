@@ -8,10 +8,11 @@
     using FirstWebApp.Models;
     using Nancy;
     using Nancy.ModelBinding;
+    using NLog;
 
     public class CustomerModule : NancyModule
     {
-        public CustomerModule(AppService appService) : base("/customer")
+        public CustomerModule(CustomerService custService, Logger logger) : base("/customer")
         {
             this.Get["/"] = parameters =>
             {
@@ -26,9 +27,9 @@
                 // 匿名型別產生匿名物件
                 /// var custList = appService.Entities.Customer.Select(c => new { Id = c.Id, CustName = c.CustName, Created = c.Created });
 
-                IList<Customer> custList = appService.FindCustomers();
-                appService.Logger.Info("test NLog");
-                appService.Logger.Debug(custList.ToArray<dynamic>()[0].CustName);
+                IList<Customer> custList = custService.FindRecords();
+                logger.Info("test NLog");
+                logger.Debug(custList.ToArray<dynamic>()[0].CustName);
                 
                 return Negotiate.WithModel(custList).WithView("ListS.sshtml");
             };
@@ -40,7 +41,7 @@
 
             this.Post["/new"] = parameters =>
             {
-                appService.AddCustomer(this.Bind<Customer>());
+                custService.AddRecord(this.Bind<Customer>());
 
                 return Response.AsRedirect("/customer");
             };
@@ -48,7 +49,7 @@
             this.Get["/{id:int}"] = parameters =>
             {
                 int id = (int)parameters.id;
-                Customer cust = appService.GetCustomerById(id);
+                Customer cust = custService.GetRecordById(id);
                 if (cust != null)
                 {
                     return View["ViewS.sshtml", cust];
@@ -62,17 +63,23 @@
             this.Post["/update/{id:int}"] = parameters =>
             {
                 Customer c = this.Bind<Customer>();
-                Customer cust = appService.GetCustomerById(c.Id);
-                cust.CustName = c.CustName;
-                appService.UpdateCustomer(cust);
+                Customer cust = custService.GetRecordById(c.Id);
+                if (cust != null)
+                {
+                    cust.CustName = c.CustName;
+                    custService.UpdateRecord(cust);
+                }
 
                 return Response.AsRedirect("/customer");
             };
 
             this.Post["/delete/{id:int}"] = parameters =>
             {
-                Customer cust = appService.GetCustomerById(parameters.Id);
-                appService.DeleteCustomer(cust);
+                Customer cust = custService.GetRecordById(parameters.Id);
+                if (cust != null)
+                {
+                    custService.DeleteRecord(cust);
+                }
 
                 return Response.AsRedirect("/customer");
             };

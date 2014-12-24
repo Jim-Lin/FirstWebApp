@@ -6,41 +6,31 @@
     using System.Web;
     using NLog;
 
-    public class AppService
+    public class CustomerService : IAppService<Customer>
     {
-        private static Logger logger;
         private FirstEntities entities;
 
-        public AppService()
+        public CustomerService()
         {
             this.entities = new FirstEntities();
-            AppService.logger = LogManager.GetCurrentClassLogger();
         }
 
-        public Logger Logger
-        {
-            get
-            {
-                return AppService.logger;
-            }
-        }
-
-        public IList<Customer> FindCustomers()
+        public IList<Customer> FindRecords()
         {
             return this.entities.Customer.ToList<Customer>();
         }
 
-        public Customer GetCustomerByName(string name)
+        public Customer GetRecordByName(string name)
         {
             return this.entities.Customer.SingleOrDefault<Customer>(c => c.CustName.Equals(name));
         }
 
-        public Customer GetCustomerById(int id)
+        public Customer GetRecordById(int id)
         {
             return this.entities.Customer.Where<Customer>(c => c.Id == id).FirstOrDefault<Customer>();
         }
 
-        public void AddCustomer(Customer cust)
+        public void AddRecord(Customer cust)
         {
             cust.Created = System.DateTime.Now;
             cust.Modified = System.DateTime.Now;
@@ -48,13 +38,13 @@
             this.entities.SaveChanges();
         }
 
-        public void UpdateCustomer(Customer cust)
+        public void UpdateRecord(Customer cust)
         {
             cust.Modified = System.DateTime.Now;
             this.entities.SaveChanges();
         }
 
-        public void DeleteCustomer(Customer cust)
+        public void DeleteRecord(Customer cust)
         {
             this.entities.Customer.Remove(cust);
             this.entities.SaveChanges();

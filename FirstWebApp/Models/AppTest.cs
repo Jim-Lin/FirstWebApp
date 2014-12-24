@@ -11,18 +11,18 @@
 
     public class AppTest
     {
-        private CustomerService appService = new CustomerService();
+        private IAppService<Customer> custService = new CustomerService();
 
         [Fact]
         public void TestCustName()
         {
-            Assert.Equal("JimLin", this.appService.GetCustomerById(2).CustName);
+            Assert.Equal("JimLin", this.custService.GetRecordById(2).CustName);
         }
 
         [Fact]
         public void TestOrderCount()
         {
-            Assert.Equal(2, this.appService.GetCustomerById(2).Order.Count);
+            Assert.Equal(2, this.custService.GetRecordById(2).Order.Count);
         }
 
         [Fact]
@@ -32,7 +32,7 @@
                 /// Customer list count is 4
                 () =>
                 {
-                        IList<Customer> cust = this.appService.FindCustomers();
+                        IList<Customer> cust = this.custService.FindRecords();
                         return cust[10].Id;
                 });
         }
@@ -62,17 +62,17 @@
 
         private void AddCustomer()
         {
-            this.appService.AddCustomer(new Customer { CustName = "TEST" });
-            Assert.NotNull(this.appService.GetCustomerByName("TEST"));
+            this.custService.AddRecord(new Customer { CustName = "TEST" });
+            Assert.NotNull(this.custService.GetRecordByName("TEST"));
         }
 
         private void DeleteCustomer()
         {
-            Customer cust = this.appService.GetCustomerByName("TEST");
+            Customer cust = this.custService.GetRecordByName("TEST");
             if (cust != null)
             {
-                this.appService.DeleteCustomer(cust);
-                Assert.Null(this.appService.GetCustomerByName("TEST"));
+                this.custService.DeleteRecord(cust);
+                Assert.Null(this.custService.GetRecordByName("TEST"));
             }
             else
             {
