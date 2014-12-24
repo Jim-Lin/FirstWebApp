@@ -11,26 +11,30 @@
 
     public class AppTest
     {
-        private WebAppService webAppService = new WebAppService();
+        private AppService appService = new AppService();
 
         [Fact]
         public void TestCustName()
         {
-            Assert.Equal("JimLin", this.webAppService.Entities.Customer.ToArray<Customer>()[0].CustName);
+            Assert.Equal("JimLin", this.appService.GetCustomerById(2).CustName);
         }
 
         [Fact]
         public void TestOrderCount()
         {
-            Assert.Equal(2, this.webAppService.Entities.Customer.ToArray<Customer>()[0].Order.Count);
+            Assert.Equal(2, this.appService.GetCustomerById(2).Order.Count);
         }
 
         [Fact]
         public void TestThrowsException()
         {
-            Assert.Throws<System.IndexOutOfRangeException>(
-                /// Customer array length is 4
-                () => this.webAppService.Entities.Customer.ToArray<Customer>()[10]);
+            Assert.Throws<System.ArgumentOutOfRangeException>(
+                /// Customer list count is 4
+                () =>
+                {
+                        IList<Customer> cust = this.appService.GetCustomers();
+                        return cust[10].Id;
+                });
         }
 
         // "Views" folder must copy paste to the "bin" folder
