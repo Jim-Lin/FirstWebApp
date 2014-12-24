@@ -13,3 +13,7 @@
 2014-12-23 09:33:34.3446|INFO|FirstWebApp.Models.WebAppService|test NLog
 2014-12-23 09:33:35.0316|DEBUG|FirstWebApp.Models.WebAppService|JimLin
 2014-12-23 10:05:23.6186|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-23 17:13:42.9042|INFO|FirstWebApp.Models.WebAppService|test NLog
+2014-12-24 09:44:50.8803|INFO|FirstWebApp.Models.AppService|test NLog
+2014-12-24 09:59:32.6973|INFO|FirstWebApp.Models.AppService|test NLog
+2014-12-24 10:01:03.3713|INFO|FirstWebApp.Models.AppService|test NLog

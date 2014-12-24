@@ -154,7 +154,7 @@
     <Compile Include="Models\AppBootstrapper.cs" />
     <Compile Include="Models\AppTest.cs" />
     <Compile Include="Models\DynamicExtensions.cs" />
-    <Compile Include="Models\WebAppService.cs" />
+    <Compile Include="Models\AppService.cs" />
     <Compile Include="Modules\CustomerModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Order.cs">

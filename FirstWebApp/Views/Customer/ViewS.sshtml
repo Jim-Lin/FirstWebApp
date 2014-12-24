@@ -4,15 +4,21 @@
     <title></title>
 </head>
 <body>
-    <dl>
-        <dt>Id</dt>
-        <dd>@Model.Id</dd>
+	<form action="update/@Model.Id" method="post">
+		<dl>
+			<dt>Id</dt>
+			<dd>@Model.Id</dd>
 
-        <dt>CustName</dt>
-        <dd>@Model.CustName</dd>
+			<dt>CustName</dt>
+			<dd><input type="text" name="CustName" value="@Model.CustName" /></dd>
 
-        <dt>CreateDate</dt>
-        <dd>@Model.Created</dd>
-    </dl>
+			<dt>CreateDate</dt>
+			<dd>@Model.Created</dd>
+
+			<dt>ModifyDate</dt>
+            <dd>@Model.Modified</dd>
+		</dl>
+		<input type="submit" name="OK" value="OK" />
+	</form>
 </body>
 </html>
