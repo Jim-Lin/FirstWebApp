@@ -22,3 +22,5 @@
 2014-12-24 10:48:20.5833|INFO|FirstWebApp.Models.AppService|test NLog
 2014-12-24 10:48:24.5873|INFO|FirstWebApp.Models.AppService|test NLog
 2014-12-24 10:48:39.1323|INFO|FirstWebApp.Models.AppService|test NLog
+2014-12-24 11:19:44.0833|INFO|FirstWebApp.Models.AppService|test NLog
+2014-12-24 11:20:01.4103|INFO|FirstWebApp.Models.AppService|test NLog

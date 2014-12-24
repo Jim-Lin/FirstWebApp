@@ -24,8 +24,7 @@
 
                 // Super Simple View Engine
                 // 匿名型別產生匿名物件
-                // var custList = appService.Entities.Customer
-                //    .Select(c => new { Id = c.Id, CustName = c.CustName, Created = c.Created });
+                /// var custList = appService.Entities.Customer.Select(c => new { Id = c.Id, CustName = c.CustName, Created = c.Created });
 
                 IList<Customer> custList = appService.FindCustomers();
                 appService.Logger.Info("test NLog");

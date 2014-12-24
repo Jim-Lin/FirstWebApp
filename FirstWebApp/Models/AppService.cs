@@ -56,7 +56,7 @@
 
         public void DeleteCustomer(Customer cust)
         {
-            entities.Customer.Remove(cust);
+            this.entities.Customer.Remove(cust);
             this.entities.SaveChanges();
         }
     }
