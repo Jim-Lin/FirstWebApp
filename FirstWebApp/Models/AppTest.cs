@@ -11,7 +11,7 @@
 
     public class AppTest
     {
-        private AppService appService = new AppService();
+        private CustomerService appService = new CustomerService();
 
         [Fact]
         public void TestCustName()
@@ -54,21 +54,30 @@
         }
 
         [Fact]
-        public void TestAddCustomer()
+        public void TestAddAndDeleteCustomer()
         {
-            this.appService.AddCustomer(new Customer { CustName = "TEST" });
-            Customer cust = this.appService.GetCustomerByName("TEST");
-
-            Assert.Equal(true, cust != null);
+            this.AddCustomer();
+            this.DeleteCustomer();
         }
 
-        [Fact]
-        public void TestDeleteCustomer()
+        private void AddCustomer()
+        {
+            this.appService.AddCustomer(new Customer { CustName = "TEST" });
+            Assert.NotNull(this.appService.GetCustomerByName("TEST"));
+        }
+
+        private void DeleteCustomer()
         {
             Customer cust = this.appService.GetCustomerByName("TEST");
-            this.appService.DeleteCustomer(cust);
-
-            Assert.Equal(null, this.appService.GetCustomerByName("TEST"));
+            if (cust != null)
+            {
+                this.appService.DeleteCustomer(cust);
+                Assert.Null(this.appService.GetCustomerByName("TEST"));
+            }
+            else
+            {
+                Assert.NotNull(cust);
+            }
         }
     }
 }
