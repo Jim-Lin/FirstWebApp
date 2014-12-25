@@ -1,10 +1,11 @@
-﻿namespace FirstWebApp.Models
+﻿namespace FirstWebApp
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using FirstWebApp.Modules;
+    using FirstWebApp.Services;
     using Nancy;
     using Nancy.Testing;
     using NLog;

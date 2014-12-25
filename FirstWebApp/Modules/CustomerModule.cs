@@ -5,7 +5,7 @@
     using System.Data.Entity;
     using System.Linq;
     using System.Web;
-    using FirstWebApp.Models;
+    using FirstWebApp.Services;
     using Nancy;
     using Nancy.ModelBinding;
     using NLog;

@@ -25,3 +25,10 @@
 2014-12-24 11:19:44.0833|INFO|FirstWebApp.Models.AppService|test NLog
 2014-12-24 11:20:01.4103|INFO|FirstWebApp.Models.AppService|test NLog
 2014-12-24 16:44:03.0712|INFO|FirstWebApp.Models.AppBootstrapper|test NLog
+2014-12-24 19:01:15.8152|INFO|FirstWebApp.Models.AppBootstrapper|test NLog
+2014-12-25 17:22:03.0899|INFO|FirstWebApp.AppBootstrapper|test NLog
+2014-12-25 17:22:11.7477|INFO|FirstWebApp.AppBootstrapper|test NLog
+2014-12-25 17:22:20.8376|INFO|FirstWebApp.AppBootstrapper|test NLog
+2014-12-25 17:22:34.9170|INFO|FirstWebApp.AppBootstrapper|test NLog
+2014-12-25 17:23:37.5193|INFO|FirstWebApp.AppBootstrapper|test NLog
+2014-12-25 17:25:16.0522|INFO|FirstWebApp.AppBootstrapper|test NLog

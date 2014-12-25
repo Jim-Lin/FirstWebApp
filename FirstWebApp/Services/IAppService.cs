@@ -1,4 +1,4 @@
-﻿namespace FirstWebApp.Models
+﻿namespace FirstWebApp.Services
 {
     using System;
     using System.Collections.Generic;
