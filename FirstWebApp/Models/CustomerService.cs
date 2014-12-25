@@ -38,13 +38,13 @@
             this.entities.SaveChanges();
         }
 
-        public void UpdateRecord(Customer c)
+        public void UpdateRecord(Customer cust)
         {
-            Customer cust = this.GetRecordById(c.Id);
-            if (cust != null)
+            Customer c = this.GetRecordById(cust.Id);
+            if (c != null)
             {
-                cust.CustName = c.CustName;
-                cust.Modified = System.DateTime.Now;
+                c.CustName = cust.CustName;
+                c.Modified = System.DateTime.Now;
                 this.entities.SaveChanges();
             }
         }
