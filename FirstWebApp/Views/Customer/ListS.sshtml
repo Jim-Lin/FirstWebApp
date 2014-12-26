@@ -5,7 +5,7 @@
 </head>
 <body>
 	@Each
-		<form action="customer/delete/@Current.Id" method="post">
+		<form action="/customer/delete/@Current.Id" method="post">
 			<dl>
 				<dt>Id</dt>
 				<dd>@Current.Id</dd>
@@ -20,7 +20,7 @@
 				<dd>@Current.Modified</dd>
 			</dl>
 			<!-- GET method -->
-			<input type="button" name="UPDATE" value="UPDATE" onclick="location.href='customer/@Current.Id'" />
+			<input type="button" name="UPDATE" value="UPDATE" onclick="location.href='/customer/@Current.Id'" />
 			<!-- POST method -->
 			<input type="submit" name="DELETE" value="DELETE" />
 		</form>
