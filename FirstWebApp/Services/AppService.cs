@@ -8,7 +8,7 @@
     using Nancy;
     using NLog;
 
-    public abstract class AppService<T> : NancyModule where T : class
+    public abstract class AppService<T> where T : class
     {
         private DbContext entities;
         private DbSet<T> entity;
