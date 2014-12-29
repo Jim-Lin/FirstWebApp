@@ -162,10 +162,10 @@
     <Compile Include="AppBootstrapper.cs" />
     <Compile Include="AppTest.cs" />
     <Compile Include="DynamicExtensions.cs" />
-    <Compile Include="Services\CustomerService.cs" />
-    <Compile Include="Services\IAppService.cs" />
     <Compile Include="Modules\CustomerModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\AppService.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>FirstModel.tt</DependentUpon>
     </Compile>

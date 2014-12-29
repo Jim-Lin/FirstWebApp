@@ -2,61 +2,50 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
     using System.Web;
+    using Nancy;
     using NLog;
 
-    public class CustomerService : IAppService<Customer>
+    public class CustomerService : AppService<Customer>
     {
-        private FirstEntities entities;
+        public CustomerService(FirstEntities entities) : base(entities)
+        {}
 
-        public CustomerService()
+        public override Customer GetRecordByName(string name)
         {
-            this.entities = new FirstEntities();
+            return this.Entity.SingleOrDefault<Customer>(c => c.CustName.Equals(name));
         }
 
-        public IList<Customer> FindRecords()
+        public override Customer GetRecordById(int id)
         {
-            return this.entities.Customer.ToList<Customer>();
+            return this.Entity.Where<Customer>(c => c.Id == id).FirstOrDefault<Customer>();
         }
 
-        public Customer GetRecordByName(string name)
-        {
-            return this.entities.Customer.SingleOrDefault<Customer>(c => c.CustName.Equals(name));
-        }
-
-        public Customer GetRecordById(int id)
-        {
-            return this.entities.Customer.Where<Customer>(c => c.Id == id).FirstOrDefault<Customer>();
-        }
-
-        public void AddRecord(Customer cust)
+        public override void AddRecord(Customer cust)
         {
             cust.Created = System.DateTime.Now;
             cust.Modified = System.DateTime.Now;
-            this.entities.Customer.Add(cust);
-            this.entities.SaveChanges();
+            this.Entity.Add(cust);
+            this.SaveChanges();
         }
 
-        public void UpdateRecord(Customer cust)
+        public override void UpdateRecord(Customer cust)
         {
             Customer c = this.GetRecordById(cust.Id);
             if (c != null)
             {
                 c.CustName = cust.CustName;
                 c.Modified = System.DateTime.Now;
-                this.entities.SaveChanges();
+                this.SaveChanges();
             }
         }
 
-        public void DeleteRecord(int id)
+        public override void DeleteRecord(Customer cust)
         {
-            Customer cust = this.GetRecordById(id);
-            if (cust != null)
-            {
-                this.entities.Customer.Remove(cust);
-                this.entities.SaveChanges();
-            }
+            this.Entity.Remove(cust);
+            this.SaveChanges();
         }
     }
 }

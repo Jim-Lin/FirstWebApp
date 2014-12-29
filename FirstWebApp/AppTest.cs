@@ -13,7 +13,8 @@
 
     public class AppTest
     {
-        private IAppService<Customer> custService = new CustomerService();
+        private static FirstEntities entities = new FirstEntities();
+        private AppService<Customer> custService = new CustomerService(entities);
 
         [Fact]
         public void TestCustName()
@@ -78,7 +79,7 @@
             Customer cust = this.custService.GetRecordByName("TEST");
             if (cust != null)
             {
-                this.custService.DeleteRecord(cust.Id);
+                this.custService.DeleteRecord(cust);
                 Assert.Null(this.custService.GetRecordByName("TEST"));
             }
             else

@@ -70,7 +70,12 @@
 
             this.Post["/delete/{id:int}"] = parameters =>
             {
-                custService.DeleteRecord(parameters.Id);
+                int id = (int)parameters.id;
+                Customer cust = custService.GetRecordById(id);
+                if (cust != null)
+                {
+                    custService.DeleteRecord(cust);
+                }
 
                 return Response.AsRedirect("/customer");
             };
