@@ -1,11 +1,13 @@
-﻿namespace FirstWebApp.Models
+﻿namespace FirstWebApp
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
+    using FirstWebApp.Services;
     using Nancy;
     using Nancy.Bootstrapper;
+    using Nancy.Conventions;
     using Nancy.TinyIoc;
     using NLog;
 
@@ -16,8 +18,11 @@
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-            container.Register<IAppService<Customer>, CustomerService>().AsSingleton();
+            FirstEntities entities = new FirstEntities();
+
             container.Register<Logger>(logger);
+            container.Register<FirstEntities>(entities);
+            container.Register<CustomerService>().AsSingleton();
         }
     }
 }

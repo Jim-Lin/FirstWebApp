@@ -1,10 +1,11 @@
-﻿namespace FirstWebApp.Models
+﻿namespace FirstWebApp
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using FirstWebApp.Modules;
+    using FirstWebApp.Services;
     using Nancy;
     using Nancy.Testing;
     using NLog;
@@ -12,7 +13,8 @@
 
     public class AppTest
     {
-        private IAppService<Customer> custService = new CustomerService();
+        private static FirstEntities entities = new FirstEntities();
+        private AppService<Customer> custService = new CustomerService(entities);
 
         [Fact]
         public void TestCustName()
@@ -77,7 +79,7 @@
             Customer cust = this.custService.GetRecordByName("TEST");
             if (cust != null)
             {
-                this.custService.DeleteRecord(cust.Id);
+                this.custService.DeleteRecord(cust);
                 Assert.Null(this.custService.GetRecordByName("TEST"));
             }
             else

@@ -159,13 +159,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FirstModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\AppBootstrapper.cs" />
-    <Compile Include="Models\AppTest.cs" />
-    <Compile Include="Models\DynamicExtensions.cs" />
-    <Compile Include="Models\CustomerService.cs" />
-    <Compile Include="Models\IAppService.cs" />
+    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="AppTest.cs" />
+    <Compile Include="DynamicExtensions.cs" />
     <Compile Include="Modules\CustomerModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="Services\CustomerService.cs" />
+    <Compile Include="Services\AppService.cs" />
     <Compile Include="Order.cs">
       <DependentUpon>FirstModel.tt</DependentUpon>
     </Compile>
